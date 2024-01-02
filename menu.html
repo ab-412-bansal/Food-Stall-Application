@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Menu</title>
+	<link rel="stylesheet" type="text/css" href="style2.css">
+</head>
+<body>
+	<header class="header">
+		<h1>Yum Hub</h1>
+	</header>
+
+	<div class="menu">
+		<div class="menu-item">
+			<img src="rajma-rice.jpeg" alt="Dish 1">
+			<h2>Rajma Rice</h2>
+			<p>Price: &#8377; 50</p>
+			<input type="number" id="dish1" name="quantity" value="0" min="0" max="9">
+			<button class="add-button" onclick="add()">Add to Cart</button>
+		</div>
+
+		<div class="menu-item">
+			<img src="khadi-chawal.jpg" alt="Dish 2">
+			<h2>Kadhi Rice</h2>
+			<p>Price: &#8377; 50</p>
+			<input type="number" id="dish2" name="quantity" value="0" min="0" max="9">
+			<button class="add-button" onclick="add()">Add to Cart</button>
+		</div>
+
+		<div class="menu-item">
+			<img src="chole-bhature.jpeg" alt="Dish 3">
+			<h2>Chole Bhature</h2>
+			<p>Price: &#8377; 60</p>
+			<input type="number" id="dish3" name="quantity" value="0" min="0" max="9">
+			<button class="add-button" onclick="add()">Add to Cart</button>
+		</div>
+
+		<div class="menu-item">
+			<img src="veg-biryani.webp" alt="Dish 4">
+			<h2>Veg. Biryani</h2>
+			<p>Price: &#8377; 100</p>
+			<input type="number" id="dish4" name="quantity" value="0" min="0" max="9">
+			<button class="add-button" onclick="add()">Add to Cart</button>
+		</div>
+
+		<div class="menu-item">
+			<img src="boondi-raita.jpeg" alt="Dish 5">
+			<h2>Boondi Raita</h2>
+			<p>Price: &#8377; 20</p>
+			<input type="number" id="dish5" name="quantity" value="0" min="0" max="9">
+			<button class="add-button" onclick="add()">Add to Cart</button>
+		</div>
+
+		<div class="menu-item">
+			<img src="extra-bhatura.jpeg" alt="Dish 6">
+			<h2>Extra Bhatura</h2>
+			<p>Price: &#8377; 20</p>
+			<input type="number" id="dish6" name="quantity" value="0" min="0" max="9">
+			<button class="add-button" onclick="add()">Add to Cart</button>
+		</div>
+	</div>
+
+	<div class="checkout">
+		<button class="checkout-button" id="checkout">Checkout</button>
+	</div>
+
+	<div class="notification" id="notification"></div>
+
+	<footer class="footer">
+		<p>&copy; 2023 Yum Hub</p>
+	</footer>
+	<script>
+		function add(){
+		// Show notification
+		var notification = document.getElementById("notification");
+  notification.innerHTML = "Dish added to cart!";
+  notification.classList.add("show");
+  
+  // Reset form
+  document.getElementById("dish1").value = "0";
+  document.getElementById("dish2").value = "0";
+  document.getElementById("dish3").value = "0";
+  document.getElementById("dish4").value = "0";
+  document.getElementById("dish5").value = "0";
+  document.getElementById("dish6").value = "0";
+
+  // Hide notification after 3 seconds
+  setTimeout(function() {
+    notification.classList.remove("show");
+  }, 3000);
+}
+
+document.getElementById("checkout").addEventListener("click", function() {
+			window.location.href = "checkout.html";
+		});
+	</script>	
+	<div id="blob"></div>
+    <div id="blur"></div>
+          
+    <script>
+    const blob = document.getElementById("blob");
+    
+    window.onpointermove = event => { 
+      const { clientX, clientY } = event;
+      
+      blob.animate({
+        left: `${clientX}px`,
+        top: `${clientY}px`
+      }, { duration: 0, fill: "forwards" });
+    }
+    </script>
+</body>
+</html>

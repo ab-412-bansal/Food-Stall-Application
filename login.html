@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+	<h1>YUM HUB</h1>
+	<form onsubmit="return redirectUser()">
+		<label for="user-type">Login as:</label>
+		<select id="user-type" name="user-type">
+			<option value="user">User</option>
+			<option value="admin">Admin</option>
+		</select><br><br>
+		<label for="username">Username:</label>
+		<input type="text" id="username" name="username" required><br><br>
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" required><br><br>
+		<input type="submit" value="Login">
+	</form>
+    <div class="s">
+        <p>Don't have an account? <a href="signup.html">Sign up here.</a></p>
+    </div>
+	<script>
+		function redirectUser() {
+			var userType = document.getElementById("user-type").value;
+			if (userType == "user") {
+				window.location.href = "menu.html";
+				return false;
+			}
+			if (userType == "admin") {
+				window.location.href = "admin.html";
+				return false;
+			}
+			return true;
+		}
+	</script>
+	<div id="blob"></div>
+    <div id="blur"></div>
+          
+    <script>
+    const blob = document.getElementById("blob");
+    
+    window.onpointermove = event => { 
+      const { clientX, clientY } = event;
+      
+      blob.animate({
+        left: `${clientX}px`,
+        top: `${clientY}px`
+      }, { duration: 0, fill: "forwards" });
+    }
+    </script>
+	
+</body>
+</html>

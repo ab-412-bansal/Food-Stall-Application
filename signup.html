@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Signup Page</title>
+	<link rel="stylesheet" href="style7.css">
+</head>
+<body>
+	<h1>Signup Page</h1>
+	<form id="signup-form">
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" name="first-name" required>
+      
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" name="last-name" required>
+      
+        <label for="mobile-number">Mobile Number</label>
+        <input type="tel" id="mobile-number" name="mobile-number" required>
+      
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+      
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" name="confirm-password" required>
+      
+        <div class="center">
+          <input type="submit" id="signup-button" value="Sign Up">
+        </div>
+      </form>
+      
+      <div class="notification" id="signup-notification"></div>
+
+      <script>
+        // get the form and button elements
+const signupForm = document.getElementById("signup-form");
+const signupButton = document.getElementById("signup-button");
+
+// add event listener to the form submission
+signupForm.addEventListener("submit", function(event) {
+  // prevent default form submission
+  event.preventDefault();
+
+  // get form inputs
+  const firstName = document.getElementById("first-name").value;
+  const lastName = document.getElementById("last-name").value;
+  const mobileNumber = document.getElementById("mobile-number").value;
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirm-password").value;
+
+  // check if passwords match
+  if (password != confirmPassword) {
+    alert("Passwords do not match. Please try again.");
+    return;
+  }
+
+  // show success notification
+  const notification = document.getElementById("signup-notification");
+  notification.innerHTML = "Signed-Up successfully!";
+  notification.classList.add("show");
+
+  // set timeout to hide notification after 3 seconds
+  setTimeout(function() {
+    notification.classList.remove("show");
+    // redirect to login.html
+    window.location.href = "login.html";
+  }, 2000);
+});
+
+      </script>
+      <div id="blob"></div>
+      <div id="blur"></div>
+            
+      <script>
+      const blob = document.getElementById("blob");
+      
+      window.onpointermove = event => { 
+        const { clientX, clientY } = event;
+        
+        blob.animate({
+          left: `${clientX}px`,
+          top: `${clientY}px`
+        }, { duration: 0, fill: "forwards" });
+      }
+      </script>
+      
+</body>
+</html>

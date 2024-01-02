@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin Page</title>
+	<link rel="stylesheet" type="text/css" href="style5.css">
+</head>
+<body>
+	<div class="sidebar">
+		<h2>Admin Dashboard</h2>
+		<ul>
+			<li class="active"><a href="admin.html">Add Dish</a></li>
+			<li><a href="view.html">View Progress</a></li>
+		</ul>
+	</div>
+	<div class="content">
+		<h2>Add Dish</h2>
+		<form>
+			<label for="dish-name">Dish Name:</label>
+			<input type="text" id="dish-name" name="dish-name" required><br><br>
+			<label for="dish-description">Dish Description:</label>
+			<textarea id="dish-description" name="dish-description" rows="4" required></textarea><br><br>
+			<label for="dish-image">Dish Image:</label>
+			<input type="file" id="dish-image" name="dish-image" accept="image/*" required><br><br>
+			<label for="dish-price">Dish Price:</label>
+			<input type="number" id="dish-price" name="dish-price" min="0" required><br><br>
+			<input type="submit" value="Add Dish" onclick="addDish()">
+		</form>
+	</div>
+    <div class="notification" id="notification"></div>
+
+    <footer class="footer">
+      <p>&copy; 2023 Yum Hub</p>
+    </footer>
+	<script>
+function addDish() {
+  // Get form inputs
+  var dishName = document.getElementById("dish-name").value;
+  var dishDescription = document.getElementById("dish-description").value;
+  var dishImage = document.getElementById("dish-image").value;
+  var dishPrice = document.getElementById("dish-price").value;
+  
+  // Create new dish object
+  var newDish = {
+    name: dishName,
+    description: dishDescription,
+    image: dishImage,
+    price: dishPrice
+  };
+  
+  // Save new dish to local storage
+  var dishes = JSON.parse(localStorage.getItem("dishes")) || [];
+  dishes.push(newDish);
+  localStorage.setItem("dishes", JSON.stringify(dishes));
+  
+  // Show notification
+  var notification = document.getElementById("notification");
+  notification.innerHTML = "Dish added successfully!";
+  notification.classList.add("show");
+  
+  // Reset form
+  document.getElementById("dish-name").value = "";
+  document.getElementById("dish-description").value = "";
+  document.getElementById("dish-image").value = "";
+  document.getElementById("dish-price").value = "";
+  
+  // Hide notification after 3 seconds
+  setTimeout(function() {
+    notification.classList.remove("show");
+  }, 3000);
+}
+
+
+    </script>
+
+<div id="blob"></div>
+<div id="blur"></div>
+      
+<script>
+const blob = document.getElementById("blob");
+
+window.onpointermove = event => { 
+  const { clientX, clientY } = event;
+  
+  blob.animate({
+    left: `${clientX}px`,
+    top: `${clientY}px`
+  }, { duration: 0, fill: "forwards" });
+}
+</script>
+
+</body>
+</html>
